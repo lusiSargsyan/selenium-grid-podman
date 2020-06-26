@@ -23,6 +23,39 @@ A Pod is a group of one or more containers (such as Docker containers), with sha
 
 Containers within a Pod share an IP address and port space, and can find each other via localhost. They can also communicate with each other using standard inter-process communications like SystemV semaphores or POSIX shared memory. Containers in different Pods have distinct IP addresses and can not communicate by IPC without special configuration. These containers usually communicate with each other via Pod IP addresses.
 
+## Setup podman
+```
+sudo yum -y install podman
+```
+
+## Amazon Linux 2
+The Kubic project provides updated packages for CentOS 7 which can be used unmodified on Amazon Linux 2.
+```
+sudo curl -L -o /etc/yum.repos.d/devel:kubic:libcontainers:stable.repo https://download.opensuse.org/repositories/devel:/kubic:/libcontainers:/stable/CentOS_7/devel:kubic:libcontainers:stable.repo
+sudo yum -y install yum-plugin-copr
+sudo yum -y copr enable lsm5/container-selinux
+sudo yum -y install podman
+
+```
+More info
+https://podman.io/getting-started/installation
+
+## Setup podman compose
+
+```
+pip3 install podman-compose
+```
+pass --user to install inside regular user home without being root.
+
+Or latest development version from GitHub:
+```
+pip3 install https://github.com/containers/podman-compose/archive/devel.tar.gz
+```
+or
+```
+curl -o /usr/local/bin/podman-compose https://raw.githubusercontent.com/containers/podman-compose/devel/podman_compose.py
+chmod +x /usr/local/bin/podman-compose
+```
 
 
 
